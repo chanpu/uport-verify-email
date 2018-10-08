@@ -108,8 +108,8 @@ class EmailVerifier {
             notifications: true,
             ...this.customRequestParams,
         })
-        const requestUri = `me.uport:me?requestToken=${requestToken}`
-        const deepLink = `https://id.uport.me/me?requestToken=${requestToken}`
+        const requestUri = `https://id.uport.me/req/${requestToken}`
+        const deepLink = `https://id.uport.me/req/${requestToken}`
         return await this._sendEmailWithQR(email, requestUri, deepLink, 'confirm')
     }
 
