@@ -139,7 +139,7 @@ class EmailVerifier {
             sub: identity.address,
             claim: {email}
         })
-        const attestationUri = `me.uport:add?attestations=${attestation}`
+        const attestationUri = `https://id.uport.me/req/${attestation}`
         if (!(settings.sendPush === false)) {
             try {
                 await this.credentials.push(
@@ -153,7 +153,7 @@ class EmailVerifier {
         }
         if (!(settings.sendEmail === false)) {
             try {
-                const deepLink = `https://id.uport.me/add?attestations=${attestation}`
+                const deepLink = `https://id.uport.me/req/${attestation}`
                 await this._sendEmailWithQR(email, attestationUri, deepLink, 'receive')
             } catch (error) {
                 console.error('Error sending attestation email:', error)
